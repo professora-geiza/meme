@@ -1,0 +1,26 @@
+import webbrowser
+import time
+import pyautogui
+
+def pesquisar_google(termo):
+    """Abre o Google e pesquisa o termo fornecido."""
+    webbrowser.open("https://www.google.com")
+    time.sleep(2)  # Espera a página carregar
+
+    # Localiza a barra de pesquisa (as coordenadas podem variar dependendo do sistema e resolução)
+    # Você pode precisar ajustar essas coordenadas usando ferramentas como o "Snipping Tool" no Windows
+    # ou ferramentas de captura de tela com informações de posição no Linux/macOS.
+    # Alternativamente, pode-se usar bibliotecas como OpenCV para identificar visualmente o elemento.
+    try:
+        pyautogui.click(x=300, y=150)  # Exemplo de coordenadas - PROVAVELMENTE PRECISA AJUSTAR
+        time.sleep(0.5)
+        pyautogui.typewrite(termo)
+        time.sleep(0.5)
+        pyautogui.press('enter')
+    except Exception as e:
+        print(f"Erro ao interagir com a página: {e}")
+        print("Por favor, ajuste as coordenadas da barra de pesquisa.")
+
+if __name__ == "__main__":
+    termo_de_pesquisa = "você é gay"
+    pesquisar_google(termo_de_pesquisa)
